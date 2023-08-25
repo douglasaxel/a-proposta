@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>A proposta</title>
+</head>
+
+<body>
+	<script>
+		document.body.onload = function () {
+			const css = `
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			#propose-app {
+				width: 100vw;
+				height: 100vh;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				font-size: 14px;
+				gap: 28px;
+				background-color: #33313f;
+				font-family: Arial, Helvetica, sans-serif;
+				position: relative;
+			}
+
+			#propose-app h1 {
+				font-size: 6em;
+				color: #fff;
+				text-align: center;
+				white-space: pre;
+			}
+
+			#propose-app div {
+				display: flex;
+				align-items: center;
+				column-gap: 2em;
+			}
+
+			#propose-app button {
+				padding: 0.5em 2em;
+				border-radius: 1em;
+				font-size: 2em;
+				cursor: pointer;
+				transition: opacity 200ms;
+				border: none;
+			}
+
+			#propose-app button.yes {
+				background-color: #a0e4a0;
+			}
+
+			#propose-app button.no {
+				background-color: #ff9898;
+			}
+
+			#propose-app button:hover {
+				opacity: 0.6;
+			}
+			`
+			function start(wrap) {
+				const btnWrap = document.createElement('div')
+				const btnYes = document.createElement('button')
+				const btnNo = document.createElement('button')
+				const question = 'C*uzinho hoje mozão?'
+				const width = document.documentElement.clientWidth
+				const height = document.documentElement.clientHeight
+
+				h1.textContent = question
+
+				btnYes.textContent = 'Sim'
+				btnYes.classList.add('yes')
+				btnYes.addEventListener('click', function () {
+					h1.textContent = 'AEEEEEEE\nEU TE AMO MOZÃOOOO\nUHUUUUULLLL'
+					btnWrap.remove()
+				})
+
+				btnNo.textContent = 'Não'
+				btnNo.classList.add('no')
+				btnNo.addEventListener('mouseover', function () {
+					console.log(`width ${Math.random() * width}px`)
+					console.log(`height ${Math.random() * height}px`)
+					const topRandom = Math.random()
+					const topCalc = (topRandom * height) - 100
+					const top = topCalc <= 0 ? topCalc * -1 : topCalc;
+					const leftRandom = Math.random()
+					const leftCalc = (leftRandom * width) - 250
+					const left = leftCalc <= 0 ? leftCalc * -1 : leftCalc;
+					btnNo.style.position = 'absolute'
+					btnNo.style.top = `${top}px`
+					btnNo.style.left = `${left}px`
+				})
+
+				btnWrap.appendChild(btnYes)
+				btnWrap.appendChild(btnNo)
+				wrap.appendChild(btnWrap)
+			}
+
+			const style = document.createElement('style')
+			style.innerText = css
+			const appWrap = document.createElement('div')
+			const h1 = document.createElement('h1')
+			appWrap.id = 'propose-app'
+
+			const btnStart = document.createElement('button')
+			btnStart.textContent = 'Iniciar'
+			btnStart.style.transform = 'translateY(-5em)'
+			btnStart.addEventListener('click', function () {
+				start(appWrap)
+				btnStart.remove()
+			})
+
+			appWrap.appendChild(h1)
+			appWrap.appendChild(btnStart)
+			document.head.appendChild(style)
+			document.body.appendChild(appWrap)
+		}
+	</script>
+</body>
+
+</html>

@@ -98,6 +98,19 @@
 					btnNo.style.top = `${top}px`
 					btnNo.style.left = `${left}px`
 				})
+				btnNo.addEventListener('click', function () {
+					console.log(`width ${Math.random() * width}px`)
+					console.log(`height ${Math.random() * height}px`)
+					const topRandom = Math.random()
+					const topCalc = (topRandom * height) - 100
+					const top = topCalc <= 0 ? topCalc * -1 : topCalc;
+					const leftRandom = Math.random()
+					const leftCalc = (leftRandom * width) - 250
+					const left = leftCalc <= 0 ? leftCalc * -1 : leftCalc;
+					btnNo.style.position = 'absolute'
+					btnNo.style.top = `${top}px`
+					btnNo.style.left = `${left}px`
+				})
 
 				btnWrap.appendChild(btnYes)
 				btnWrap.appendChild(btnNo)
